@@ -10,8 +10,9 @@ This project is developed as part of a **Full Stack Development Internship Assig
 ### 🔐 Authentication
 
 -   Secure user registration and login
--   JWT-based authentication using HttpOnly cookies
+-   JWT-based authentication using **Authorization headers**
 -   Protected routes for authenticated users
+-   Token stored securely in browser localStorage
 
 ### 👥 Flexible Roles
 
@@ -24,7 +25,6 @@ This project is developed as part of a **Full Stack Development Internship Assig
 
 -   Create gigs with title, description, and budget
 -   Browse all open gigs
--   Search gigs by title
 -   Automatic gig status update after hiring
 
 ### 💬 Bidding System
@@ -40,12 +40,6 @@ This project is developed as part of a **Full Stack Development Internship Assig
 -   All other bids are automatically marked as `rejected`
 -   Implemented using MongoDB Transactions to prevent race conditions
 
-### 🔔 Real-Time Notifications (Bonus Feature)
-
--   Implemented using Socket.IO
--   Freelancer receives instant notification when hired
--   No page refresh required
-
 ---
 
 ## 🛠 Tech Stack
@@ -56,14 +50,13 @@ This project is developed as part of a **Full Stack Development Internship Assig
 -   Tailwind CSS
 -   Axios
 -   React Router
--   Socket.IO Client
 
 ### Backend
 
 -   Node.js
 -   Express.js
 -   MongoDB with Mongoose
--   JWT Authentication
+-   JWT Authentication (Authorization Header)
 -   Socket.IO
 
 ---
@@ -102,7 +95,10 @@ JWT_SECRET=your_secret_key
 
 ### Frontend (`.env`)
 
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://gigflow-backend-0wih.onrender.com/api
+
+> ⚠️ Frontend `.env` files are not committed to GitHub.  
+> Environment variables are configured directly in the deployment platform.
 
 ---
 
@@ -143,26 +139,18 @@ http://localhost:5173
 2. Login as Client → Create a gig
 3. Login as Freelancer → Submit a bid
 4. Login as Client → View bids → Hire freelancer
-5. Freelancer receives real-time notification
+5. Gig status updates automatically
 
 ---
 
 ## 🧠 Key Learnings
 
--   Secure authentication using JWT and cookies
--   MongoDB schema relationships and transactions
--   Race-condition-safe hiring logic
--   Real-time communication using Socket.IO
--   Frontend and backend integration best practices
-
----
-
-## 🎯 Bonus Features Completed
-
--   Transaction-safe hiring logic
--   Real-time hire notifications
--   Role-based UI rendering
--   Environment-based configuration
+-   JWT-based authentication without cookies
+-   Secure route protection using middleware
+-   MongoDB schema relationships
+-   Transaction-safe business logic
+-   Clean frontend-backend separation
+-   Production-ready deployment practice
 
 ---
 
@@ -174,4 +162,4 @@ Chandra Pratap Singh
 
 ## ✅ Final Note
 
-This project follows industry best practices and demonstrates real-world full stack development concepts including authentication, database design, secure business logic, and real-time updates.
+This project follows modern full stack development best practices and demonstrates real-world implementation of authentication, authorization, database transactions, and scalable REST API design.
