@@ -20,11 +20,21 @@ export const createGig = async (req, res) => {
 export const getGigs = async (req, res) => {
     try {
         const search = req.query.search || "";
+        let gigs = [];
 
-        const gigs = await Gig.find({
-            status: "open",
-            title: { $regex: search, $options: "i" },
-        });
+        if (req.userRole === "freelancer") {
+            gigs = await Gig.find({
+                status: "open",
+                title: { $regex: search, $options: "i" },
+            });
+        }
+
+        if (req.userRole === "client") {
+            gigs = await Gig.find({
+                ownerId: req.userId,
+                title: { $regex: search, $options: "i" },
+            });
+        }
 
         res.json(gigs);
     } catch (error) {

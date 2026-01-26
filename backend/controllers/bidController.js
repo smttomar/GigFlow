@@ -44,7 +44,7 @@ export const getBidsByGig = async (req, res) => {
 
         const bids = await Bid.find({ gigId: gig._id }).populate(
             "freelancerId",
-            "name email"
+            "name email",
         );
 
         res.json(bids);
@@ -76,7 +76,7 @@ export const hireBid = async (req, res) => {
         await Bid.updateMany(
             { gigId: gig._id, _id: { $ne: bid._id } },
             { status: "rejected" },
-            { session }
+            { session },
         );
 
         await session.commitTransaction();

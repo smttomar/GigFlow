@@ -8,24 +8,31 @@ import Register from "./pages/Register";
 import Gigs from "./pages/Gigs";
 import CreateGig from "./pages/CreateGig";
 import Bids from "./pages/Bids";
+import { Toaster } from "react-hot-toast";
 
 function App() {
     return (
         <BrowserRouter>
+            <Toaster position="top-center" reverseOrder={false} />
             <Navbar />
 
             <Routes>
-                {/* Public Routes */}
-                <Route path="/" element={<Gigs />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
-                {/* Protected Routes */}
                 <Route
                     path="/create-gig"
                     element={
                         <ProtectedRoute>
                             <CreateGig />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/"
+                    element={
+                        <ProtectedRoute>
+                            <Gigs />
                         </ProtectedRoute>
                     }
                 />

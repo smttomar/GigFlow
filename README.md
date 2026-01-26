@@ -1,7 +1,6 @@
 # 🚀 GigFlow – Full Stack Freelance Marketplace
 
-GigFlow is a mini freelance marketplace platform where users can post jobs (gigs), bid on jobs, and hire freelancers.  
-This project is developed as part of a **Full Stack Development Internship Assignment**.
+GigFlow is a mini freelance marketplace platform where users can post jobs (gigs), bid on jobs, and hire freelancers.
 
 ---
 
@@ -9,36 +8,29 @@ This project is developed as part of a **Full Stack Development Internship Assig
 
 ### 🔐 Authentication
 
--   Secure user registration and login
--   JWT-based authentication using **Authorization headers**
--   Protected routes for authenticated users
--   Token stored securely in browser localStorage
-
-### 👥 Flexible Roles
-
--   No fixed roles such as Client or Freelancer
--   Any logged-in user can:
-    -   Post a gig (acts as Client)
-    -   Bid on gigs (acts as Freelancer)
+- Secure user registration and login
+- JWT-based authentication using **Authorization headers**
+- Protected routes for authenticated users
+- Token stored securely in browser localStorage
 
 ### 📄 Gig Management
 
--   Create gigs with title, description, and budget
--   Browse all open gigs
--   Automatic gig status update after hiring
+- Create gigs with title, description, and budget
+- Browse all open gigs
+- Automatic gig status update after hiring
 
 ### 💬 Bidding System
 
--   Freelancers can submit bids with message and price
--   Gig owners can view all bids
--   Only the gig owner can hire a freelancer
+- Freelancers can submit bids with message and price
+- Gig owners can view all bids
+- Only the gig owner can hire a freelancer
 
 ### 🔥 Hiring Logic (Core Feature)
 
--   Only one freelancer can be hired per gig
--   Selected bid is marked as `hired`
--   All other bids are automatically marked as `rejected`
--   Implemented using MongoDB Transactions to prevent race conditions
+- Only one freelancer can be hired per gig
+- Selected bid is marked as `hired`
+- All other bids are automatically marked as `rejected`
+- Implemented using MongoDB Transactions to prevent race conditions
 
 ---
 
@@ -46,18 +38,18 @@ This project is developed as part of a **Full Stack Development Internship Assig
 
 ### Frontend
 
--   React.js (Vite)
--   Tailwind CSS
--   Axios
--   React Router
+- React.js (Vite)
+- Tailwind CSS
+- Axios
+- React Router
 
 ### Backend
 
--   Node.js
--   Express.js
--   MongoDB with Mongoose
--   JWT Authentication (Authorization Header)
--   Socket.IO
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication (Authorization Header)
+- Socket.IO
 
 ---
 
@@ -145,12 +137,12 @@ http://localhost:5173
 
 ## 🧠 Key Learnings
 
--   JWT-based authentication without cookies
--   Secure route protection using middleware
--   MongoDB schema relationships
--   Transaction-safe business logic
--   Clean frontend-backend separation
--   Production-ready deployment practice
+- JWT-based authentication without cookies
+- Secure route protection using middleware
+- MongoDB schema relationships
+- Transaction-safe business logic
+- Clean frontend-backend separation
+- Production-ready deployment practice
 
 ---
 
