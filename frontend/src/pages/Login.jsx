@@ -8,9 +8,15 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+
+    const Spinner = () => (
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+    );
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         try {
             const res = await api.post("/auth/login", { email, password });
@@ -25,6 +31,8 @@ export default function Login() {
             toast.success("Wellcome Back");
         } catch (error) {
             toast.error("Login failed");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -87,11 +95,20 @@ export default function Login() {
 
             <button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-blue-600 text-white py-2.5 rounded-lg
-               font-medium hover:bg-blue-700 transition
-               active:scale-[0.98]"
+             font-medium flex items-center justify-center gap-2
+             hover:bg-blue-700 transition
+             disabled:opacity-70 disabled:cursor-not-allowed"
             >
-                Login
+                {loading ? (
+                    <>
+                        <Spinner />
+                        Logging in...
+                    </>
+                ) : (
+                    "Login"
+                )}
             </button>
 
             <p className="text-center text-sm text-gray-500 mt-4">

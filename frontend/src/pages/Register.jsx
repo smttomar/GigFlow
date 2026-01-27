@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -9,6 +10,10 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     const [role, setRole] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
+    const Spinner = () => (
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+    );
 
     const navigate = useNavigate();
 
@@ -20,7 +25,7 @@ export default function Register() {
             await api.post("/auth/register", { name, email, password, role });
             navigate("/login");
         } catch (err) {
-            alert("Registration failed");
+            toast.error("Registration failed");
         } finally {
             setLoading(false);
         }
@@ -122,11 +127,18 @@ export default function Register() {
                 type="submit"
                 disabled={loading}
                 className="w-full bg-green-600 text-white py-2.5 rounded-lg
-               font-medium hover:bg-green-700 transition
-               disabled:opacity-50 disabled:cursor-not-allowed
-               active:scale-[0.98]"
+             font-medium flex items-center justify-center gap-2
+             hover:bg-green-700 transition
+             disabled:opacity-70 disabled:cursor-not-allowed"
             >
-                {loading ? "Creating account..." : "Register"}
+                {loading ? (
+                    <>
+                        <Spinner />
+                        Creating account...
+                    </>
+                ) : (
+                    "Register"
+                )}
             </button>
 
             <p className="text-center text-sm text-gray-500 mt-4">
